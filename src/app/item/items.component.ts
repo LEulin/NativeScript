@@ -1,36 +1,26 @@
 import { Component, OnInit , Input, Output, EventEmitter} from "@angular/core";
-
+import { Router } from '@angular/router'
 import { Item } from "./item";
-import { ItemService } from "./item.service";
 
 @Component({
     selector: "ns-items",
     templateUrl: "./items.component.html"
 })
 export class ItemsComponent implements OnInit {
-    items: Array<Item>;
-    item : Item
+    @Input() items: Array<Item>;
+    @Input() titleText: string;
+    @Output() result = new EventEmitter() 
 
-    constructor(private itemService: ItemService) { }
+    constructor(private router: Router) { }
 
-    ngOnInit(): void {
-        this.item = {
-            id: 0,
-            name: "",
-            role: "",
-            type: ""
-        }
-        this.items = this.itemService.getItems();
-    }
+    ngOnInit() {}
 
     add(data){
-        var obj = {
-            id: this.items.length + 1,
-            name: data.name,
-            role: data.role,
-            type: data.type
-        }
-        this.items.push(obj)
+        this.result.emit(data)
+    }
+
+    isHomeRoute(){
+        return this.router.url == "/grid"
     }
 
 }

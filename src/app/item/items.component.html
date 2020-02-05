@@ -1,20 +1,21 @@
-<ActionBar title="My Native NativeScript Application">
-    <Gridlayout columns="*, *, *">
-        <Button col="0" text="Go to grid" style="background-color:pink" class="btn" [nsRouterLink]="['/grid']"></Button>
-        <Button col="1" text="Soccer" style="background-color:gray" class="btn" [nsRouterLink]="['/soccerplayer']"></Button>
-        <Button col="2" text="Artist" style="background-color:skyblue" class="btn" [nsRouterLink]="['/artist']"></Button>
-    </Gridlayout>
-</ActionBar>
+    <ActionBar [title]="titleText">
+            <NavigationButton  android.systemIcon="ic_menu_back" *ngIf="!isHomeRoute()" [nsRouterLink]="['/grid']"></NavigationButton>
+            <ActionItem ios.position="right" text="Image" [nsRouterLink]="['/imagedrag']"></ActionItem>
+            <ActionItem ios.position="right" text="Artists" [nsRouterLink]="['/artist']"></ActionItem>
+            <ActionItem ios.position="right" text="Soccer" [nsRouterLink]="['/soccer']"></ActionItem>
+    </ActionBar>
 
-<GridLayout columns="*,*" col="0">
-    <ListView [items]="items">
+    
+<GridLayout rows="*,200" >
+    <ListView [items]="items" row="0" col="0">
         <ng-template let-item="item">
-            <StackLayout>
+            <StackLayout >
                 <Label [nsRouterLink]="['/item', item.id]" [text]="item.name"></Label>
-            </StackLayout>
-        </ng-template>
-    </ListView>
-    <GridLayout col="1">
-        <ns-form (editEvent)="add($event)" ></ns-form>
-    </GridLayout>
+                </StackLayout>
+            </ng-template>
+     </ListView>
+     <StackLayout padding="30px" backgroundcolor="gray" row="1">
+            <ns-form  (editEvent)="add($event)" [store]="item"></ns-form>
+     </StackLayout>
 </GridLayout>
+

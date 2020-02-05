@@ -1,19 +1,19 @@
-<ActionBar title="Details">
-        <FlexboxLayout flexDirection="column">
-            <FlexboxLayout class="m-15">
-                <Label class="h2" [text]="item.id + '. '"></Label>
-                <Label class="h2" [text]="item.name"></Label>
+    <GridLayout rows="180,*">
+        <StackLayout backgroundColor="gray" row="0">
+            <FlexboxLayout textAlignment="center"  class="m-15">
+            <Label color="white" class="h2" [text]="item.id + '. '"></Label>
+            <Label color="white" class="h2" [text]="item.name"></Label>
             </FlexboxLayout>
-            <Label class="h3 m-15" [text]="item.role"></Label>
-            <FlexboxLayout class="m-10">
-                <Label textWrap="true" text="Goals Score!" class="h4 description-label"></Label>
-                <Button text="Increment" class="btn1" (tap)="onTap()"></Button>
-                <Button *ngIf="number > 0" text="Decrement" class="btn2" (tap)="decre()"></Button>
-                <Label textWrap="true" [text]="number" class="h2 description-label"></Label>
-            </FlexboxLayout>
+            <Label textAlignment="left" color="black" textAlignment="center" class="h3 m-15" [text]="'Role:' + ' ' + item.role"></Label>
+            <Label textAlignment="right" color="black" textAlignment="center" class="h3 m-15" [text]="'Type:' + ' ' +item.type"></Label>
+        </StackLayout>
+        <Stacklayout padding="50px" backgroundColor="gray" row="1">
+            <Label textAlignment="center" text="Goals Score!" class="h3 description-label"></Label>
+            <Label textAlignment="center" [text]="number" class="h2 description-label"></Label>
+            <Button text="Increment" class="btn1" (tap)="onTap()"></Button>
+            <Button *ngIf="number > 0" text="Decrement" class="btn2" (tap)="decre()"></Button>
             <Button (tap)="update()" text="Update" class="btn"></Button>
 
-            <StackLayout class="form">
-                <ns-form *ngIf="show" (editEvent)="update($event)" [store]="item"></ns-form>
-            </StackLayout>
-        </FlexboxLayout>
+            <ns-form *ngIf="show" (editEvent)="update($event)" [store]="item"></ns-form>
+    </Stacklayout>
+</GridLayout>

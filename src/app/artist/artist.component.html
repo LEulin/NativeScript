@@ -1,9 +1,2 @@
-<ActionBar title="Artist Component">
-    <Gridlayout columns="*, *, *, *">
-        <Button col="0" text="Go to grid" style="background-color:pink" class="btn" [nsRouterLink]="['/grid']"></Button>
-        <Button col="1" text="Soccer" style="background-color:gray" class="btn" [nsRouterLink]="['/soccerplayer']"></Button>
-        <Button col="2" text="Artist" style="background-color:skyblue" class="btn" [nsRouterLink]="['/artist']"></Button>
-        <Button col="3" text="Home" style="background-color:yellow" class="btn" [nsRouterLink]="['/']"></Button>
-    </Gridlayout>
-</ActionBar>
-<Button text="artist works!" class="btn btn-primary"></Button>
+<ns-items [items]="items" (result)="add($event)" [titleText]="'Artists'"></ns-items>
+

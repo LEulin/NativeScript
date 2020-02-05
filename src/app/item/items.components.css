@@ -4,3 +4,7 @@
     border: solid 2px black;
     background: skyblue
 }
+.flex{
+    background: linear-gradient(to bottom, #66ffff 0%, #ff99cc 100%);
+    /* color: blue */
+}

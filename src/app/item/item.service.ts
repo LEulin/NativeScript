@@ -1,22 +1,22 @@
 import { Injectable } from "@angular/core";
 
-import { Item, Type} from "./item";
+import { Item, Type } from "./item";
 
 @Injectable({
     providedIn: "root"
 })
 export class ItemService {
     private items = new Array<Item>(
-        { id: 1, name: "Ter Stegen", role: "Goalkeeper", type: Type.Artist },
-        { id: 2, name: "Piqué", role: "Defender",  type: Type.Artist },
-        { id: 3, name: "I. Rakitic", role: "Midfielder", type: Type.Artist  },
-        { id: 4, name: "Sergio", role: "Midfielder", type: Type.Artist},
-        { id: 5, name: "Denis Suárez", role: "Midfielder", type: Type.Artist},
-        { id: 6, name: "Arda", role: "Midfielder", type: Type.Artist },
-        { id: 7, name: "A. Iniesta", role: "Midfielder", type: Type.Artist},
-        { id: 8, name: "Suárez", role: "Forward", type: Type.Artist },
-        { id: 9, name: "Messi", role: "Forward", type: Type.Artist },
-        { id: 10, name: "Neymar", role: "Forward", type: Type.Artist },
+        { id: 1, name: "Ter Stegen", role: "Singer", type: Type.Artist },
+        { id: 2, name: "Piqué", role: "Dancer", type: Type.Artist },
+        { id: 3, name: "I. Rakitic", role: "Actress", type: Type.Artist },
+        { id: 4, name: "Sergio", role: "Dancer", type: Type.Artist },
+        { id: 5, name: "Denis Suárez", role: "Singer", type: Type.Artist },
+        { id: 6, name: "Arda", role: "Dancer", type: Type.Artist },
+        { id: 7, name: "A. Iniesta", role: "Singer", type: Type.Artist },
+        { id: 8, name: "Suárez", role: "Actress", type: Type.Artist },
+        { id: 9, name: "Messi", role: "Actress", type: Type.Artist },
+        { id: 10, name: "Neymar", role: "Actor", type: Type.Artist },
         { id: 11, name: "Rafinha", role: "Midfielder", type: Type.Soccer },
         { id: 12, name: "Cillessen", role: "Goalkeeper", type: Type.Soccer },
         { id: 13, name: "Mascherano", role: "Defender", type: Type.Soccer },
@@ -31,43 +31,26 @@ export class ItemService {
         { id: 22, name: "Masip", role: "Goalkeeper", type: Type.Soccer }
     );
 
-    // private artists = new Array<Item>(
-    //     { id: 1, name: "Lealyn Eulin", role: "Singer" },
-    //     { id: 2, name: "Mhemhe", role: "Dancer" },
-    //     { id: 3, name: "Pong", role: "Paintor" },
-    //     { id: 4, name: "Renan", role: "Dancer" },
-    //     { id: 5, name: "Raymond", role: "Singer" },
-    //     { id: 6, name: "Athan", role: "Actress" },
-    //     { id: 8, name: "Monmon", role: "Actor" },
-    //     { id: 9, name: "Mibel", role: "Singer" },
-    //     { id: 10, name: "Cutie", role: "Actress" },
-    //     { id: 11, name: "Angie", role: "Dancer" },
-    //     { id: 12, name: "Ronnel", role: "Actor" },
-    //     { id: 13, name: "Arth", role: "Singer" },
-    //     { id: 14, name: "Gago", role: "Actor" },
-    //     { id: 15, name: "Tarants", role: "Singer" },
-    //     { id: 16, name: "Junmar", role: "Dancer" },
-    //     { id: 17, name: "Belen", role: "Singer" },
-    //     { id: 18, name: "Cute", role: "Dancer" },
-    //     { id: 19, name: "John", role: "Actor" },
-    //     { id: 20, name: "Carlo", role: "Dancer" },
-    // );
-
 
     getItems(): Array<Item> {
         return this.items;
     }
-    // getArtist() : Array<Item>{
-    //     return this.artists
-    // }
 
-    getArtist(type: string): Item {
-        return
+    getArtist(): Array<Item> {
+        return this.items.filter(artist=> artist.type == Type.Artist)
+    }
+
+    getSoccer(): Array<Item> {
+        return this.items.filter(soccer=> soccer.type == Type.Soccer)
     }
 
     getItem(id: number): Item {
         return this.items.filter(item => item.id === id)[0];
     }
 
-
+    addItem(data) {
+        data.id = this.items[this.items.length - 1].id + 1
+        this.items.push(data)
+        return data
+    }
 }

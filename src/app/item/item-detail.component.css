@@ -1,14 +1,16 @@
 .btn1{
+    width: 300px;
+    height: 100px;
     margin-top: 2%;
     color: black;
-    border: solid 2px black;
     background: skyblue
 }
 .btn2{
+    width: 300px;
+    height: 100px;
     margin-top: 2%;
     color: black;
-    border: solid 2px black;
-    background: red
+    background:pink
 }
 .btn{
     background-color: green

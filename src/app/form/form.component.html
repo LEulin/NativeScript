@@ -1,5 +1,7 @@
 <StackLayout class="form">
-    <TextField hint="Enter text here..." [(ngModel)]="store.name">
+    <TextField color="white" hint="Enter name here..." [(ngModel)]="name">
     </TextField>
-    <Button (tap)="submit()" text="Submit" class="btn"></Button>
+    <TextField color="white" hint="Enter role here..." [(ngModel)]="role">
+        </TextField>
+    <Button color="white" (tap)="submit()" text="Submit" class="btn"></Button>
 </StackLayout>

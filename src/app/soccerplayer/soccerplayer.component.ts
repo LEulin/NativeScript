@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ItemService } from '../item/item.service';
-import { Item } from '../item/item';
+import { Item, Type } from '../item/item';
 
 @Component({
   selector: 'ns-soccerplayer',
@@ -9,13 +9,17 @@ import { Item } from '../item/item';
 })
 export class SoccerplayerComponent implements OnInit {
 
-    item : Array<Item>
+    @Input() items : Array<Item>
     info: Item
 
   constructor(private service: ItemService) {}
 
-  ngOnInit(): void{
-     this.item = this.service.getItems()
+  ngOnInit(): void {
+     this.items = this.service.getSoccer()
   }
 
+  add(data){
+    data.type = Type.Soccer
+    this.items.push(this.service.addItem(data))
+  }
 }
